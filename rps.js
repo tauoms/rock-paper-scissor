@@ -25,18 +25,21 @@ function getComputerChoice() {
 
 let computerChoice = getComputerChoice();
 let playerChoice = "Rock";
-let roundResult = singleRound();
+let roundResult = singleRound(playerChoice, computerChoice);
 
-function singleRound() {
+
+function singleRound(playerChoice, computerChoice) {
     let roundResult;
     if (playerChoice.toLowerCase() == "rock" && computerChoice == "Scissors") {
-        roundResult = "You win! " + playerChoice + " beats " + computerChoice + ".";
+        roundResult = `You win! ${playerChoice} beats ${computerChoice}.`;
     } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "Paper") {
-        roundResult = "You lose. " + computerChoice + " beats " + playerChoice + ".";
+        roundResult = `You lose. ${computerChoice} beats ${playerChoice}.`;
     } else {
-        roundResult = "It's a tie! Both chose " + computerChoice + ".";
+        roundResult = `It's a tie! Both chose ${computerChoice}.`;
     }
     return roundResult;
 }
 
+console.log("Player: " + playerChoice)
+console.log("Computer: " + computerChoice)
 console.log(roundResult)
