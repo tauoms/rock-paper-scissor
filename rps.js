@@ -61,7 +61,17 @@ function game() {
         console.log(playRound(playerChoice, computerChoice));
         }
     }
+    console.log(announceWinner());
+}
+
+function announceWinner() {
+    if (playerWins > computerWins) {
+        return `You win the game! You won ${playerWins} to ${computerWins}.`;
+    } else if (playerWins < computerWins) {
+        return `You lose. :( Computer won ${computerWins} to ${playerWins}.`; 
+    } else { 
+        return `The game is a tie! ${playerWins} vs. ${computerWins}`;
+    }
 }
 
 game();
-console.log(playerWins + " vs. " + computerWins)
