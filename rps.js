@@ -1,7 +1,7 @@
 /*
 pseudo code v0.1 for Rock Paper Scissors:
 
-INIT random computer choice of rock, paper or scissor.
+INIT random computer choice of rock, paper or scissors.
 Ask for player's choice of rock, paper or scissors.
 Compare computer and player choice.
     If player choice wins, alert "You win! " + choice beats choice.
@@ -23,7 +23,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function singleRound(playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {
     if (playerChoice.toLowerCase() == "rock" && computerChoice == "Scissors") {
         return `You win! ${playerChoice} beats ${computerChoice}.`;
     } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "Paper") {
@@ -40,12 +40,24 @@ function singleRound(playerChoice, computerChoice) {
     } else {
         return `It's a tie! Both chose ${computerChoice}.`;
     }
-    
 }
 
-const computerChoice = getComputerChoice();
-const playerChoice = "scissors";
+let playerChoice;
+let computerChoice = getComputerChoice();
 
-console.log("Player: " + playerChoice)
-console.log("Computer: " + computerChoice)
-console.log(singleRound(playerChoice, computerChoice));
+function game() {
+    console.log("Playing 5 rounds: ");
+    for (let step = 0; step < 5; step++) {
+        playerChoice = window.prompt("Please select Rock/Paper/Scissors: ");
+        if (playerChoice.toLowerCase() !== "rock" 
+        && playerChoice.toLowerCase() !== "paper" 
+        && playerChoice.toLowerCase() !== "scissors") {
+            playerChoice = window.prompt("Please select Rock/Paper/Scissors: ", "Invalid input! Try again.");
+        } else {
+        computerChoice = getComputerChoice();
+        console.log(playRound(playerChoice, computerChoice));
+        }
+    }
+}
+
+game();
