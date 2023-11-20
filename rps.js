@@ -23,22 +23,25 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+let playerWins = 0;
+let computerWins = 0;
+
 function playRound(playerChoice, computerChoice) {
-    if (playerChoice.toLowerCase() == "rock" && computerChoice == "Scissors") {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "Paper") {
-        return `You lose. ${computerChoice} beats ${playerChoice}.`;
-    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "Rock") {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "Scissors") {
-        return `You lose. ${computerChoice} beats ${playerChoice}.`;
-    } else if (playerChoice.toLowerCase() == "scissors" && computerChoice == "Paper") {
-        return `You win! ${playerChoice} beats ${computerChoice}.`;
-    } else if (playerChoice.toLowerCase() == "scissors" && computerChoice == "Rock") {
-        return `You lose. ${computerChoice} beats ${playerChoice}.`; 
-    
-    } else {
+    if (playerChoice.toLowerCase() == computerChoice.toLowerCase()) {
         return `It's a tie! Both chose ${computerChoice}.`;
+    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "Scissors") {
+        ++playerWins;
+        return `You win! ${playerChoice} beats ${computerChoice}.`;  
+    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "Rock") {
+        ++playerWins;
+        return `You win! ${playerChoice} beats ${computerChoice}.`;
+    } else if (playerChoice.toLowerCase() == "scissors" && computerChoice == "Paper") {
+        ++playerWins;
+        return `You win! ${playerChoice} beats ${computerChoice}.`;
+
+    } else {
+        ++computerWins;
+        return `You lose. ${computerChoice} beats ${playerChoice}.`; 
     }
 }
 
@@ -61,3 +64,4 @@ function game() {
 }
 
 game();
+console.log(playerWins + " vs. " + computerWins)
